@@ -1,1 +1,1 @@
-# Friendship-Business-Innovation-Platform
+# i-city-u

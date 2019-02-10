@@ -16,11 +16,13 @@ import VueNotice from './vue-notice'
 Vue.use(VueNotice)
 import auth from './auth/index.js'
 import axios from 'axios'
+import { Slide } from 'vue-burger-menu'
 Vue.prototype.$moment = moment;
 Vue.prototype.$http = axios;
-
+import { Image } from 'bootstrap-vue/es/components';
+Vue.use(Image);
 //Vue.http.headers.common['Authorization'] = 'JWT ' + localStorage.getItem('id_token');
-
+Vue.config.productionTip = false
 // Check the user's auth status when the app starts
 auth.checkAuth()
 

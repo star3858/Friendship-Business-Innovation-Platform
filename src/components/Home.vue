@@ -33,25 +33,26 @@ import {
 export default {
   data() {
     return {
+      user: auth.user,
       slides: [{
-          img: "https://files.slack.com/files-pri/T9NV71YH4-FCJLAGCP7/______________2018-08-31_02-58-11.png",
-          title: "A-pros",
-          mark: "project"
+          img: "https://user-images.githubusercontent.com/35095311/46920569-1a681500-d02b-11e8-9298-357a5f24d02f.jpeg",
+          title: "I-city-U",
+          mark: "A-pros hanium project"
         },
         {
-          img: "https://files.slack.com/files-pri/T9NV71YH4-FCJM9NKH8/111.png",
-          title: "Infra",
+          img: "https://user-images.githubusercontent.com/35095311/46920545-c826f400-d02a-11e8-8eb4-ba85a6be1046.jpeg",
+          title: "Platform",
           mark: "Amazon Web Services Cloud"
         },
         {
-          img: "https://files.slack.com/files-pri/T9NV71YH4-FCJEMKH52/2018-08-31-09-27-50.jpg",
+          img: "https://user-images.githubusercontent.com/35095311/46920542-af1e4300-d02a-11e8-9c4b-df35e7e00bbe.jpg",
           title: "Smarter driving",
           mark: "Autonomous & Safety"
         },
         {
-          img: "https://images.unsplash.com/photo-1466150036782-869a824aeb25?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=",
-          title: "Experience in a New Way",
-          mark: "Convenience"
+          img: "https://user-images.githubusercontent.com/35095311/46920563-07554500-d02b-11e8-89b5-27cccf72efed.png",
+          title: "Automate Data collection",
+          mark: "Block-Chain Based"
         }
       ],
       current: 0,
@@ -114,6 +115,8 @@ export default {
     this.playslides[0] = this.slides[0];
     this.playslides[1] = this.slides[1];
     this.play();
+    console.log("상태확인 : ",auth.user.authenticated);
+    //if(!auth.user.authenticated)auth.logout()
   }
 };
 </script>

@@ -39,7 +39,6 @@ export default {
   methods: {
     movetosignup() {
       console.log('signup called')
-
       this.$router.push('/signup')
     },
     submit() {
@@ -70,9 +69,6 @@ export default {
           //get하는법
           axios.get('http://teamapros.ap-northeast-2.elasticbeanstalk.com/roads/', config)
             .then(response => {
-              console.log("response :", response)
-              console.log(response.data[1].name)
-
             });
           console.log("테스트 2");
           console.log("토큰 2 : ", response.data.token);
@@ -82,7 +78,7 @@ export default {
         })
         .catch(error => {
           console.log(error);
-          console.log("에러났다병신아")
+          console.log("에러")
           swal({
             title: 'Error!',
             text: '아이디 및 비밀번호가 잘못되었습니다',

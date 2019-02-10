@@ -8,7 +8,10 @@ import Login from './components/Login.vue'
 import Road from './components/Road.vue'
 import Cars from './components/Cars.vue'
 import Talk from './components/Talk.vue'
+import Maps from './components/Maps.vue'
+import Premium from './components/Premium.vue'
 import Crim from './components/Crim.vue'
+import Coin from './components/Coin.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -36,8 +39,16 @@ export default new Router({
       component: Road
     },
     {
+      path: '/Premium',
+      component: Premium
+    },
+    {
       path: '/Cars',
       component: Cars
+    },
+    {
+      path: '/Maps',
+      component: Maps
     },
     {
       path: '/Crim',
@@ -46,6 +57,10 @@ export default new Router({
     {
       path: '/Talk',
       component: Talk
+    },
+    {
+      path: '/Coin',
+      component: Coin
     },
     {
       path: '/secretquote',

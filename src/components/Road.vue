@@ -8,8 +8,8 @@
     <div class="field has-addons">
       <select class="w-25" v-model="selected_name">
           <option disabled value="">도로명</option>
-          <option>inha-ro</option>
-          <option>gi-ro	</option>
+          <option>한이음길</option>
+          <option>우체국길</option>
         </select>
       <!--위치-->
       <select class="from-control" v-model="selected_location">
@@ -46,7 +46,7 @@
         <tr class="text-center">
           <th class="text-left">#</th>
           <th class="text-left">도로명</th>
-          <th class="text-left">위치</th>
+          <th class="text-left">혼잡도</th>
           <th class="text-left">세부내용</th>
           <th class="text-left">통행여부</th>
           <th class="text-left">시작시간</th>
@@ -61,8 +61,8 @@
             <span class="from-control" v-show="!item.edit">{{item.name}}</span>
             <select class="from-control" v-model="item.name" v-show="item.edit">
               <option disabled value="">도로명</option>
-              <option>inha-ro</option>
-              <option>gi-ro	</option>
+              <option>한이음길</option>
+              <option>우체국길</option>
             </select>
           </td>
           <!--위치-->
@@ -185,7 +185,7 @@ export default {
 
       this.$http.post('http://teamapros.ap-northeast-2.elasticbeanstalk.com/roads/situation/', {
         name: this.selected_name,
-        location: this.selected_location,
+        //location: this.selected_location,
         message: this.item.Road_message,
         isimpassable: this.selected_possable,
         startTime: this.item.Road_startTime,
@@ -220,7 +220,7 @@ export default {
       item.edit = false;
       this.$http.post('http://teamapros.ap-northeast-2.elasticbeanstalk.com/roads/situation/', {
         name: item.name,
-        location: item.location,
+      //  location: item.location,
         message: item.message,
         isimpassable: item.isimpassable,
         startTime: item.startTime,

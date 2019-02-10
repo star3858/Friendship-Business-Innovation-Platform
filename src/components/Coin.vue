@@ -2,7 +2,7 @@
 <div class="columns is-mobile" id="post_car_app">
   <div class="column is-10 is-offset-1">
     <!--title-->
-    <p class="title is-2 is-spaced">배달 차량 현황
+    <p class="title is-2 is-spaced">코인 획득 내역
       <div class="from-control">
         <button id="reset" class="button is-warning" @click="reset()">갱신하기</button>
       </div>
@@ -15,10 +15,10 @@
       <thead>
         <tr class="text-center">
           <th class="text-left">#</th>
-          <th class="text-left">차량이름</th>
-          <th class="text-left">차량번호</th>
-          <th class="text-left">운전자</th>
-          <th class="text-left">위치</th>
+          <th class="text-left">username</th>
+          <th class="text-left">coin</th>
+          <th class="text-left">message</th>
+          <th class="text-left">date</th>
         </tr>
       </thead>
       <tbody>
@@ -26,17 +26,17 @@
           <td>{{item.index}}</td>
           <!--차량번호-->
           <td>
-            <span class="">{{item.name}}</span>
+            <span class="from-control">{{item.username}}</span>
           </td>
           <td>
-            <span class="from-control">{{item.number}}</span>
+            <span class="from-control">{{item.count}}</span>
           </td>
           <!--위치-->
           <td>
-            <span class="from-control">{{item.owner}}</span>
+            <span class="from-control">{{item.message}}</span>
           </td>
           <td>
-            <span class="from-control">{{item.location}}</span>
+            <span class="from-control">{{item.created_at}}</span>
           </td>
         </tr>
       </tbody>
@@ -59,10 +59,10 @@ export default {
     return {
       list: [],
       item: {
-        name: '',
-        number: '',
-        owner: '',
-        location: '',
+        username: '',
+        count: '',
+        message: '',
+        created_at: '',
       }
     }
   },
@@ -72,7 +72,7 @@ export default {
   methods: {
     getData() {
       this.list = []
-      this.$http.get('http://teamapros.ap-northeast-2.elasticbeanstalk.com/cars/postcars/', {
+      this.$http.get('http://teamapros.ap-northeast-2.elasticbeanstalk.com/users/log/'+ auth.user.username, {
         headers: {
           //Authorization: 'JWT ' + 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozLCJ1c2VybmFtZSI6InRlc3RlciIsImV4cCI6MTUzMzY5NDEzOSwiZW1haWwiOiJ0ZXN0ZXJAdGVzdGVyLmNvbSJ9.FdvoNFI41XYIIohHmBEgeHdL-_e1ZKlv74d4UN4D9vk'
           Authorization: auth.getAuthHeader()
@@ -81,10 +81,10 @@ export default {
         for (var iter = 0; iter < result.data.length; iter++) {
           var temp = {
             'index': iter + 1,
-            'name': result.data[iter].name,
-            'number': result.data[iter].number,
-            'owner': result.data[iter].owner,
-            'location': result.data[iter].location,
+            'username': result.data[iter].username,
+            'count': result.data[iter].count,
+            'message': result.data[iter].message,
+          'created_at': this.$moment(result.data[iter].created_at).format('YYYY년 M월 D일 h시 m분'),
           }
           this.list.push(temp);
         }
